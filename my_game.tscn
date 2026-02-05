@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cdjtlijsqau14"]
+
+[ext_resource type="Script" uid="uid://dr5ys8okhwbxo" path="res://player.gd" id="1_nnxny"]
+[ext_resource type="Texture2D" uid="uid://bv530ec0souqg" path="res://2D Resources/characters/DinoSprites - doux.png" id="2_4hbor"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpuau"]
+atlas = ExtResource("2_4hbor")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37j2t"]
+atlas = ExtResource("2_4hbor")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y5s2f"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_jpuau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37j2t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y5s2f"]
+radius = 5.114826
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_37j2t"]
+
+[node name="My Game" type="Node2D" unique_id=1355570652]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1659161918]
+position = Vector2(504, 385)
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1766262130]
+position = Vector2(408.75, 349)
+scale = Vector2(6.2708325, 5.75)
+script = ExtResource("1_nnxny")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=1450603794]
+position = Vector2(0.039866924, 6.434784)
+scale = Vector2(0.60797346, 0.6811595)
+sprite_frames = SubResource("SpriteFrames_y5s2f")
+frame = 1
+frame_progress = 0.21276592
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1424649182]
+position = Vector2(-0.4385376, 6.956524)
+scale = Vector2(1.0000004, 1)
+shape = SubResource("CircleShape2D_y5s2f")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=482739245]
+position = Vector2(206, 470)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=405325483]
+position = Vector2(200, -36)
+scale = Vector2(3, 3)
+shape = SubResource("WorldBoundaryShape2D_37j2t")

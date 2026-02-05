@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="FreemanJacob_FirstProject_01"
-run/main_scene="uid://bchvb8uessr6p"
+run/main_scene="uid://ccqfspu7314xq"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
