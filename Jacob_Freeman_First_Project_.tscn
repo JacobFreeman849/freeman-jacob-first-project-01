@@ -498,3 +498,9 @@ position = Vector2(1103, 246)
 
 [node name="Danger!!2" parent="." unique_id=1596664316 instance=ExtResource("7_cmi6i")]
 position = Vector2(268, 230)
+
+[node name="Danger!!3" parent="." unique_id=1857602774 instance=ExtResource("7_cmi6i")]
+position = Vector2(544, 263)
+
+[node name="Danger!!4" parent="." unique_id=1880882901 instance=ExtResource("7_cmi6i")]
+position = Vector2(1505, 295)
