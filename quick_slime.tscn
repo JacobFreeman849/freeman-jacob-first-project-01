@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bvm837d18bj3s"]
+
+[ext_resource type="Script" uid="uid://jek4y26qut55" path="res://node_2d.gd" id="1_iudqs"]
+[ext_resource type="Texture2D" uid="uid://b7oc8i3p1n6sc" path="res://2D Resources/enemies/Green Slime Spritesheet.png" id="2_7oo3s"]
+[ext_resource type="PackedScene" uid="uid://c16nfjebtnls0" path="res://killzone.tscn" id="3_umbte"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7oo3s"]
+atlas = ExtResource("2_7oo3s")
+region = Rect2(48, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umbte"]
+atlas = ExtResource("2_7oo3s")
+region = Rect2(64, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxct6"]
+atlas = ExtResource("2_7oo3s")
+region = Rect2(80, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3354k"]
+atlas = ExtResource("2_7oo3s")
+region = Rect2(96, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4s81"]
+atlas = ExtResource("2_7oo3s")
+region = Rect2(112, 0, 16, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p6m7b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7oo3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umbte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxct6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3354k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4s81")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5hy31"]
+radius = 7.0
+
+[node name="QuickSlime" type="Node2D" unique_id=1926330730]
+script = ExtResource("1_iudqs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=34978233]
+position = Vector2(1.5, 2)
+scale = Vector2(1.1875, 1.2222222)
+sprite_frames = SubResource("SpriteFrames_p6m7b")
+
+[node name="Killzone" parent="." unique_id=311242901 instance=ExtResource("3_umbte")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=2000522212]
+position = Vector2(2, 3)
+shape = SubResource("CircleShape2D_5hy31")
+
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=260252287]
+position = Vector2(2, 3)
+target_position = Vector2(10, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=2105837297]
+position = Vector2(2, 3)
+target_position = Vector2(-11, 0)
