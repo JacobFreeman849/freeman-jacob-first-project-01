@@ -1,12 +1,13 @@
 extends Node2D
 
 
-const SPEED = 120
+const SPEED = 95
 
 var direction = 1
 @onready var ray_cast_right: RayCast2D = $RayCastRight
 @onready var ray_cast_left: RayCast2D = $RayCastLeft
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
 
 
 func _process(delta: float) -> void:
@@ -18,3 +19,18 @@ func _process(delta: float) -> void:
 		animated_sprite.flip_h = true
 	
 	position.x += direction * SPEED * delta
+
+
+
+func _on_area_2d_body_entered(body: Node2D):
+	print("hello")
+	if (body.name == "Player"):
+		var y_delta = position.y - body.position.y
+		print(y_delta)
+		if (y_delta > 60):
+			print("Destroy enemy")
+			queue_free()
+			body.jump()
+		else:
+			print("Decrease player health")
+			get_tree().reload_current_scene()
