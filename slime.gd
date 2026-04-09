@@ -8,6 +8,7 @@ var direction = 1
 @onready var ray_cast_left: RayCast2D = $RayCastLeft
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func _process(delta: float) -> void:
@@ -28,7 +29,7 @@ func _on_area_2d_body_entered(body):
 		print(y_delta)
 		if (y_delta > 60):
 			print("Destroy enemy")
-			queue_free()
+			animation_player.play("stomp")
 			body.jump()
 		else:
 			print("Decrease player health")

@@ -11,9 +11,17 @@ config_version=5
 [application]
 
 config/name="FreemanJacob_FirstProject_01"
-run/main_scene="uid://ccqfspu7314xq"
+run/main_scene="uid://brmm15o5w5ap4"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://cbnl1xya12fv2"
+
+[autoload]
+
+Music="*uid://ca01mi66svqgo"
 
 [input]
 

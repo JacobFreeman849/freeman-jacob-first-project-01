@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://jek4y26qut55" path="res://node_2d.gd" id="1_iudqs"]
 [ext_resource type="Texture2D" uid="uid://b7oc8i3p1n6sc" path="res://2D Resources/enemies/Green Slime Spritesheet.png" id="2_7oo3s"]
+[ext_resource type="AudioStream" uid="uid://rdp1fo4h8qhr" path="res://2D Resources/sounds/sfx_bump.ogg" id="3_iudqs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5hy31"]
 radius = 9.0
@@ -49,6 +50,105 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_ppcr1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxBump:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jayke"]
+resource_name = "stomp"
+length = 0.16666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxBump:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.16666669),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7oo3s"]
+_data = {
+&"RESET": SubResource("Animation_ppcr1"),
+&"stomp": SubResource("Animation_jayke")
+}
+
 [node name="QuickSlime" type="Node2D" unique_id=1926330730]
 script = ExtResource("1_iudqs")
 
@@ -72,6 +172,12 @@ target_position = Vector2(-11, 0)
 position = Vector2(2, 2)
 scale = Vector2(1.1875, 1.2222222)
 sprite_frames = SubResource("SpriteFrames_p6m7b")
+
+[node name="SfxBump" type="AudioStreamPlayer" parent="." unique_id=1217637476]
+stream = ExtResource("3_iudqs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1572801309]
+libraries/ = SubResource("AnimationLibrary_7oo3s")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
